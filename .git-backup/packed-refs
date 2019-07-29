@@ -1,0 +1,11 @@
+# pack-refs with: peeled fully-peeled sorted 
+c58a843957b3a07284b9b974140a26678e434844 refs/remotes/origin/master
+aadaba8b9695a4372ef5fc43f4be903dfa481307 refs/remotes/origin/step0/pages-and-links
+928efec6368f8fd075868b63b805bb9c82f904e9 refs/remotes/origin/step1/styles
+eb7e6768e9b28e82365d4e370c83405a33edcc5b refs/remotes/origin/step2/graphql-and-seo
+c4ac4ee157ced5ed6f248f371db4b49259feb1a2 refs/remotes/origin/step3/mdx
+ded88826aa79511a2e04efea0623a93f6bfb1d05 refs/remotes/origin/step4/mdx-blog
+f090e023dc0f11d50d8194ff2a6ab917da614be1 refs/remotes/origin/step5/hero-image
+3a8d1e321d053720ee80ec3e726685e933bb382b refs/remotes/origin/step6/blog-images
+7f5fdb69d3ba33aad277c79d941214f467ee34df refs/remotes/origin/step7/source-plugins
+6c5b8847823c64ef47e57f917e6608c1ed98aebb refs/remotes/origin/step8/analyze

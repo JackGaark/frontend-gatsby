@@ -1,0 +1,65 @@
+body {
+  font-family: Cooper Hewitt;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #004d9d;
+  color: #ffffff;
+}
+
+header {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.content {
+  position: fixed;
+  top: 160px;
+  left: 40px;
+}
+
+footer {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px 0 0;
+  transition: all 0.5s;
+}
+
+a:hover {
+  color: #cccccc;
+}
+
+.photo-blurred {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media (max-width: 600px) {
+  header {
+    top: 20px;
+    left: 20px;
+  }
+
+  footer {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .photo-blurred {
+    height: 75vw;
+    background-attachment: scroll;
+  }
+}

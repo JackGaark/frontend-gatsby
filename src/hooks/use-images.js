@@ -5,7 +5,10 @@ const useImages = () => {
   // const isMobile = windowWidth <= 768
   const data = useStaticQuery(graphql`
     query {
-      images: allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+      images: allFile(
+        filter: { sourceInstanceName: { eq: "images" } }
+        sort: { fields: name }
+      ) {
         edges {
           image: node {
             name

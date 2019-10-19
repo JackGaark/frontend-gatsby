@@ -9,6 +9,7 @@ const usePosts = () => {
             title
             author
             slug
+            url
           }
           excerpt
         }
@@ -21,6 +22,7 @@ const usePosts = () => {
     author: post.frontmatter.author,
     slug: post.frontmatter.slug,
     excerpt: post.excerpt,
+    url: post.frontmatter.url
   }));
 };
 

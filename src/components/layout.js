@@ -1,9 +1,11 @@
 import React from 'react';
 import Header from './header';
-// import Posts from './posts';
+import Posts from './posts';
+import Post from './post';
 import Helmet from 'react-helmet';
 import useSiteMetadata from '../hooks/use-sitemetadata';
 import useImages from '../hooks/use-images';
+import usePosts from '../hooks/use-posts';
 import "./base.css"
 import "./fonts.css"
 import "./style.css"
@@ -11,6 +13,11 @@ import "./style.css"
 const Layout = ({children}) => {
   const {title,description} = useSiteMetadata();
   const images = useImages();
+  const posts = usePosts()
+
+  console.log(posts)
+  console.log(posts[0])
+  console.log(posts[1])
 
   return (
   <>
@@ -19,7 +26,7 @@ const Layout = ({children}) => {
     <title>Hello FEM</title>
     <meta name="description" content={description} />
   </Helmet>
-  <Header />
+  {/* <Header /> */}
   <main>
       {images.edges.map((edge, i) => {
         console.log(edge.image)
@@ -31,14 +38,15 @@ const Layout = ({children}) => {
             backgroundImage:`
             url("${edge.image.childImageSharp.fixed.src}")
             `,
-            }}
-          />
+            }}>
+              {i === 0 ? <Posts /> : <Post post={posts[i - 1]} />}
+            </div>
         )
       })}
     </main>
-    <div className="content">
+    {/* <div className="content">
       {children}
-    </div>
+    </div> */}
     <footer>
       <a href="#">Email</a>
       <a href="#">Twitter</a>

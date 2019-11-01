@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, createRef } from 'react';
 import Header from './header';
 import Posts from './posts';
 import Post from './post';
@@ -10,74 +10,61 @@ import "./base.css"
 import "./fonts.css"
 import "./style.css"
 
+const ImageWrapper = (props) => {
+  return (
+    <div
+      className="photo-blurred"
+      style={{ backgroundImage: `url("${props.imageSrc}")` }}>
+      {props.children}
+    </div>
+  )
+}
+
 const Layout = ({children}) => {
   const {title,description} = useSiteMetadata();
   const images = useImages();
   const posts = usePosts()
+  const [firstImage, ...restImages] = images.edges
+  const imagesRef = useRef(restImages.map(() => createRef()))
 
-  console.log(posts)
-  console.log(posts[0])
-  console.log(posts[1])
+  const seePostHandler = (index) => {
+    imagesRef.current[index].current.scrollIntoView({
+      behavior: "smooth"
+    })
+  }
 
   return (
-  <>
-  <Helmet>
-    <html lang="en" />
-    <title>Hello FEM</title>
-    <meta name="description" content={description} />
-  </Helmet>
-  {/* <Header /> */}
-  <main>
-      {images.edges.map((edge, i) => {
-        console.log(edge.image)
-        return (
-          <div
-            className="photo-blurred"
-            key = {i}
-            style = {{
-            backgroundImage:`
-            url("${edge.image.childImageSharp.fixed.src}")
-            `,
-            }}>
-              {i === 0 ? <Posts /> : <Post post={posts[i - 1]} />}
-            </div>
-        )
-      })}
-    </main>
-    {/* <div className="content">
-      {children}
-    </div> */}
-    <footer>
-      <a href="#">Email</a>
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-    </footer>
-  </>
+    <>
+      <Helmet>
+        <html lang="en" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Helmet>
+      {/* <Header /> */}
+      <main>
+        <ImageWrapper imageSrc={firstImage.image.childImageSharp.fixed.src}>
+          <Posts seePostHandler={seePostHandler} />
+        </ImageWrapper>
+
+        <ImageWrapper imageSrc={firstImage.image.childImageSharp.fixed.src}>
+          <Post post={posts[1]} />
+        </ImageWrapper>
+
+        {restImages.map(({ image }, i) => (
+          <div ref={imagesRef.current[i]} key={i}>
+            <ImageWrapper imageSrc={image.childImageSharp.fixed.src}>
+              <Post post={posts[i]} />
+            </ImageWrapper>
+          </div>
+        ))}
+      </main>
+      <footer>
+        <a href="#">Email</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+      </footer>
+    </>
   );
 };
 
 export default Layout;
-
-  // render = {
-  //   ({
-  //     images
-  //   }) => {
-  //     // necessary on first load, because Gatsby cannot build/compute window.innerWidth
-  //     if (!windowWidth) {
-  //       return null
-  //     }
-
-  //     if (isMobile) {
-  //       return <GalleryMobile images = {
-  //         images
-  //       }
-  //       />
-  //     }
-
-  //     return <Gallery images = {
-  //       images
-  //     }
-  //     />
-  //   }
-  // }
-  // />

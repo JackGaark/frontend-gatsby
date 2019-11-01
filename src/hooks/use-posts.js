@@ -3,8 +3,9 @@ import {graphql,useStaticQuery} from 'gatsby';
 const usePosts = () => {
   const data = useStaticQuery(graphql `
     query {
-      allMdx {
+      allMdx(sort: { fields: [id] order: DESC }) {
         nodes {
+          id
           frontmatter {
             title
             author

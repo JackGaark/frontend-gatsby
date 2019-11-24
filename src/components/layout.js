@@ -20,7 +20,7 @@ const ImageWrapper = (props) => {
   )
 }
 
-const Layout = ({children}) => {
+const Layout = () => {
   const {title,description} = useSiteMetadata();
   const images = useImages();
   const posts = usePosts()
@@ -46,10 +46,6 @@ const Layout = ({children}) => {
           <Posts seePostHandler={seePostHandler} />
         </ImageWrapper>
 
-        <ImageWrapper imageSrc={firstImage.image.childImageSharp.fixed.src}>
-          <Post post={posts[1]} />
-        </ImageWrapper>
-
         {restImages.map(({ image }, i) => (
           <div ref={imagesRef.current[i]} key={i}>
             <ImageWrapper imageSrc={image.childImageSharp.fixed.src}>
@@ -59,9 +55,8 @@ const Layout = ({children}) => {
         ))}
       </main>
       <footer>
-        <a href="#">Email</a>
-        <a href="#">Twitter</a>
-        <a href="#">Instagram</a>
+        <a href="mailto:jack.gaarkeuken@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/jack-gaarkeuken" target="_blank">Linkedin</a>
       </footer>
     </>
   );

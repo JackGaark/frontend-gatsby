@@ -8,7 +8,7 @@ function Post({ post }) {
     <div className="post">
       {post.title} - {post.excerpt}
       <br />
-      <a href={post.url}>Visit site</a>
+      <a href={post.url} target="_blank">Visit site</a>
     </div>
   )
 }

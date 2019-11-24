@@ -1,26 +1,38 @@
 import React from 'react';
 import {css} from '@emotion/core';
-import {Link} from 'gatsby';
-import ReadLink from '../components/read-link';
 
 const PostPreview = ({ post, seePostHandler }) => (
   <article
     css={css`
-      border-bottom: 1px solid #ddd;
-      margin-top: 0.75rem;
+      margin-top: 1rem;
       padding-bottom: 1rem;
 
       :first-of-type {
         margin-top: 1rem;}
     `}
     >
-  <h3>
-    <Link to={post.slug}>{post.title}</Link>
+  <h3
+    onClick={seePostHandler}
+    css={css`
+      cursor: pointer;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    `}
+  >
+   {post.title}
   </h3>
   <p>{post.excerpt}</p>
     {/* va scroller vers le lien */}
-    <button onClick={seePostHandler}>Read this post &rarr;</button>
-    {/* <ReadLink to={post.slug}>read this post &rarr;</ReadLink> */}
+    <button onClick={seePostHandler} css={css`
+      cursor: pointer;
+
+      &:hover {
+        background: #efefef;
+      }
+    `}>Read this post &rarr;</button>
   </article>
 );
 

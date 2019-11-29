@@ -1,9 +1,9 @@
-import {graphql,useStaticQuery} from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const usePosts = () => {
-  const data = useStaticQuery(graphql `
+  const data = useStaticQuery(graphql`
     query {
-      allMdx(sort: { fields: [id] order: DESC }) {
+      allMdx(sort: { fields: [id], order: DESC }) {
         nodes {
           id
           frontmatter {
@@ -23,7 +23,7 @@ const usePosts = () => {
     author: post.frontmatter.author,
     slug: post.frontmatter.slug,
     excerpt: post.excerpt,
-    url: post.frontmatter.url
+    url: post.frontmatter.url,
   }));
 };
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import {graphql} from 'gatsby';
-import {MDXRenderer} from 'gatsby-plugin-mdx';
-import {css} from '@emotion/core';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { css } from '@emotion/core';
 import Layout from '../components/layout';
 import ReadLink from '../components/read-link';
 import Postlayout from '../components/postlayout';
 
-export const query = graphql `
+export const query = graphql`
   query($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
@@ -18,18 +18,18 @@ export const query = graphql `
   }
 `;
 
-const PostTemplate = ({data: {mdx: post}}) => (
+const PostTemplate = ({ data: { mdx: post } }) => (
   <Postlayout>
     <h1>{post.frontmatter.title}</h1>
-      <p
-        css={css `
+    <p
+      css={css`
         font-size: 0.75rem;
       `}
-      >
+    >
       Posted by {post.frontmatter.author}
-  </p>
-  <MDXRenderer>{post.body}</MDXRenderer>
-  <ReadLink to="/">&larr; back to all posts</ReadLink>
+    </p>
+    <MDXRenderer>{post.body}</MDXRenderer>
+    <ReadLink to="/">&larr; back to all posts</ReadLink>
   </Postlayout>
 );
 

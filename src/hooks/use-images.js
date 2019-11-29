@@ -1,4 +1,4 @@
-import {useStaticQuery,graphql} from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const useImages = () => {
   // const windowWidth = useWindowWidth()
@@ -21,8 +21,8 @@ const useImages = () => {
         }
       }
     }
-  `)
-  return data.images
-}
+  `);
+  return data.images;
+};
 
 export default useImages;

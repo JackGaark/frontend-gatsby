@@ -1,5 +1,5 @@
 import React from 'react';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 
 const PostPreview = ({ post, seePostHandler }) => (
   <article
@@ -8,31 +8,37 @@ const PostPreview = ({ post, seePostHandler }) => (
       padding-bottom: 1rem;
 
       :first-of-type {
-        margin-top: 1rem;}
-    `}
-    >
-  <h3
-    onClick={seePostHandler}
-    css={css`
-      cursor: pointer;
-      font-weight: bold;
-
-      &:hover {
-        text-decoration: underline;
+        margin-top: 1rem;
       }
     `}
   >
-   {post.title}
-  </h3>
-  <p>{post.excerpt}</p>
-    {/* va scroller vers le lien */}
-    <button onClick={seePostHandler} css={css`
-      cursor: pointer;
+    <h3
+      onClick={seePostHandler}
+      css={css`
+        cursor: pointer;
+        font-weight: bold;
 
-      &:hover {
-        background: #efefef;
-      }
-    `}>Read this post &rarr;</button>
+        &:hover {
+          text-decoration: underline;
+        }
+      `}
+    >
+      {post.title}
+    </h3>
+    <p>{post.excerpt}</p>
+    {/* va scroller vers le lien */}
+    <button
+      onClick={seePostHandler}
+      css={css`
+        cursor: pointer;
+
+        &:hover {
+          background: #efefef;
+        }
+      `}
+    >
+      Read this post &rarr;
+    </button>
   </article>
 );
 

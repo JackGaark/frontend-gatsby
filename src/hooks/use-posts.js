@@ -12,7 +12,7 @@ const usePosts = () => {
             slug
             url
           }
-          excerpt
+          excerpt(pruneLength: 10000)
         }
       }
     }
@@ -23,6 +23,7 @@ const usePosts = () => {
     author: post.frontmatter.author,
     slug: post.frontmatter.slug,
     excerpt: post.excerpt,
+    html: post.html,
     url: post.frontmatter.url,
   }));
 };

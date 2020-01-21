@@ -6,32 +6,33 @@ import Helmet from 'react-helmet';
 import useSiteMetadata from '../hooks/use-sitemetadata';
 import useImages from '../hooks/use-images';
 import usePosts from '../hooks/use-posts';
-import "./base.css"
-import "./fonts.css"
-import "./style.css"
+import './base.css';
+import './fonts.css';
+import './style.css';
 
-const ImageWrapper = (props) => {
+const ImageWrapper = props => {
   return (
     <div
       className="photo-blurred"
-      style={{ backgroundImage: `url("${props.imageSrc}")` }}>
+      style={{ backgroundImage: `url("${props.imageSrc}")` }}
+    >
       {props.children}
     </div>
-  )
-}
+  );
+};
 
 const Layout = () => {
-  const {title,description} = useSiteMetadata();
+  const { title, description } = useSiteMetadata();
   const images = useImages();
-  const posts = usePosts()
-  const [firstImage, ...restImages] = images.edges
-  const imagesRef = useRef(restImages.map(() => createRef()))
+  const posts = usePosts();
+  const [firstImage, ...restImages] = images.edges;
+  const imagesRef = useRef(restImages.map(() => createRef()));
 
-  const seePostHandler = (index) => {
+  const seePostHandler = index => {
     imagesRef.current[index].current.scrollIntoView({
-      behavior: "smooth"
-    })
-  }
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <>
@@ -56,7 +57,12 @@ const Layout = () => {
       </main>
       <footer>
         <a href="mailto:jack.gaarkeuken@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/jack-gaarkeuken" target="_blank">Linkedin</a>
+        <a href="https://www.linkedin.com/in/jack-gaarkeuken" target="_blank">
+          Linkedin
+        </a>
+        <span>
+          Personal portfolio with projects. Gatsby site hosted on Netlify
+        </span>
       </footer>
     </>
   );

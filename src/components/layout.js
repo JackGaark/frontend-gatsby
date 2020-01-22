@@ -61,7 +61,7 @@ const Layout = () => {
           Linkedin
         </a>
         <span>
-          Hi Im Jack, this is my personal portfolio. I built this site with
+          Hi I'm Jack, this is my personal portfolio. I built this site with
           Gatsby. It’s hosted on Netlify.
         </span>
       </footer>
